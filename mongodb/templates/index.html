@@ -7,16 +7,21 @@
         <title> test </title>
     </head>
     <body>
-            <table style="width:100%">
+            <table style="width:100%" class="table">
+                <colgroup>
+                    <col style="background-color:lightcoral">
+                    <col style="background-color:lightsteelblue">
+                </colgroup>
                 <!-- table header -->
+                <thead class="thead-dark">
                 {% if Results %}
-                <tr>
-                    {% for key in Results[0] %}
-                    <th> {{ key }} </th>
-                    {% endfor %}
-                </tr>
+                    <tr>
+                        {% for key in Results[0] %}
+                        <th> {{ key }} </th>
+                        {% endfor %}
+                    </tr>
                 {% endif %}
-                
+                </thead>   
                 <!-- table rows -->
                 {% for dict_item in Results %}
                 <tr>
