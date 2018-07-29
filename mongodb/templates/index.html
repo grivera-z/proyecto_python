@@ -4,10 +4,31 @@
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
             <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}"> -->
-        <title> test </title>
+        <title> {{Title}} </title>
     </head>
+    <nav style="background-color: #333;" class="navbar-static-top">
+            <div class="row">
+                    <div class="col-md-4"><img src="{{ url_for('static',filename='img/DXC_Logo.png')}}" width="260" height="45"></div>
+                    <div class="col-md-4" style="color:snow; text-align:center;"><h2>{{Title}}</h2></div>
+                    <div class="col-md-4"></div>
+            </div>
+    </nav>
     <body>
-            <table style="width:100%" class="table">
+            {% if Coll_Names %}
+            <div class="form-group col-md-4">
+                <br>
+                <a>hola:</a>
+                <select class="form-control" onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+                    <option value="">Select...</option>
+                    {% for Coll in Coll_Names %}
+                        <option value="{{Coll}}">{{Coll}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+
+
+            <table id="tblCustomers" cellspacing="0" cellpadding="0" style="width:100%" class="table">
                 <colgroup>
                     <col style="background-color:lightcoral">
                     <col style="background-color:lightsteelblue">
@@ -34,7 +55,7 @@
        <footer>
            <div class="container">
                <div class="row">
-                   <p class="copyright text-muted">&copy; Curso Flask 2016</p>
+                   <p class="copyright text-muted">&copy; GabRiver</p>
                </div>
            </div>
        </footer>

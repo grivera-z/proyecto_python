@@ -9,13 +9,15 @@ app.config["MONGO_URI"] = "mongodb://localhost:27017/curso_mean2"
 mongo = PyMongo(app)
 
 @app.route("/")
-def home_page():
+@app.route("/<Documents>")
+def home_page(Documents='albums'):
     Results = mongo.db["artists"].find()
     array = list(Results)
-    f= open("test.txt","w+")
-    f.write(str(array))
-    f.close() 
-    return render_template("index.html",Results=array)
+    Coll_Names = mongo.db.collection_names()
+    # Coll_list = []
+    # for i in Coll_Names:
+    #     Coll_list.append('<option value="'+ i+'">'+i+'</option>')
+    return render_template("index.html",Results=array,Title=Documents.upper(),Coll_Names=Coll_Names)
 
 # @app.route('/') #wrap o un decorador 
 # def index():   #funcion que regrsa un string
